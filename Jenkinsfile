@@ -38,6 +38,7 @@ pipeline {
                 kubectl --kubeconfig=$KUBECONFIG apply -f k8s/deployment.yaml
                 """
         }
+        } 
     }
 }
 
