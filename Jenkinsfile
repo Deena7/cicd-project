@@ -27,14 +27,16 @@ pipeline {
           """
         }
       }
-    } 
-    stage('Deploy to Kubernetes') {
-      steps {
-        withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
-          sh "kubectl --kubeconfig=$KUBECONFIG apply -f k8s/deployment.yaml"
-        }
-      }
     }
-  }
+    stage('Deploy to Kubernetes') {
+    steps {
+        // Use the secret file
+        withCredentials([file(credentialsId: 'k3s-config', variable: 'KUBECONFIG')]) {
+            sh '''
+                kubectl version --client
+                kubectl --kubeconfig=$KUBECONFIG get nodes             
+                kubectl --kubeconfig=$KUBECONFIG apply -f k8s/deployment.yaml
+        }
+    }
 }
 
