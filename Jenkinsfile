@@ -1,5 +1,8 @@
 pipeline {
   agent any
+  tools {
+    jdk 'jdk11'
+   }
   stages {
     stage('Checkout') {
       steps { git branch: 'main', credentialsId: 'github-creds', url: 'https://github.com/Deena7/cicd-project.git' }
