@@ -2,8 +2,6 @@ pipeline {
   agent any
   tools {
     jdk 'jdk17'
-    maven 'Maven3'
-    kubectl 'kubectl'
    }
   stages {
     stage('Checkout') {
@@ -29,7 +27,7 @@ pipeline {
           """
         }
       }
-    }
+    } 
     stage('Deploy to Kubernetes') {
       steps {
         withCredentials([file(credentialsId: 'kubeconfig', variable: 'KUBECONFIG')]) {
