@@ -3,6 +3,7 @@ pipeline {
   tools {
     jdk 'jdk17'
     maven 'Maven3'
+    kubectl 'kubectl'
    }
   stages {
     stage('Checkout') {
