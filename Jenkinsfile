@@ -36,7 +36,7 @@ pipeline {
                 kubectl version --client
                 kubectl --kubeconfig=$KUBECONFIG get nodes             
                 kubectl --kubeconfig=$KUBECONFIG apply -f k8s/deployment.yaml
-                """
+           """
         }
         } 
     }
