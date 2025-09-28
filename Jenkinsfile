@@ -32,10 +32,11 @@ pipeline {
     steps {
         // Use the secret file
         withCredentials([file(credentialsId: 'k3s-config', variable: 'KUBECONFIG')]) {
-            sh '''
+            sh """
                 kubectl version --client
                 kubectl --kubeconfig=$KUBECONFIG get nodes             
                 kubectl --kubeconfig=$KUBECONFIG apply -f k8s/deployment.yaml
+                """
         }
     }
 }
