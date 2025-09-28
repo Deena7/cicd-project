@@ -14,7 +14,7 @@ pipeline {
     stage('SonarQube Analysis') {
       steps {
         withCredentials([string(credentialsId: 'sonar-token', variable: 'SONAR_TOKEN')]) {
-          sh "mvn sonar:sonar -Dsonar.login=${SONAR_TOKEN} -Dsonar.host.url=http://<EC2-2-IP>:9000"
+          sh "mvn sonar:sonar -Dsonar.login=${SONAR_TOKEN} -Dsonar.host.url=http://54.251.225.123:9000"
         }
       }
     }
